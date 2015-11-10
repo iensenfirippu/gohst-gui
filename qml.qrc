@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ToolSeparator.qml</file>
+        <file>OptionsTab.qml</file>
+        <file>EditTab.qml</file>
+        <file>ListTab.qml</file>
+        <file>CommandModel_Mock.qml</file>
     </qresource>
 </RCC>

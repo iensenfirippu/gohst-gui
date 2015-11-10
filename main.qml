@@ -19,11 +19,13 @@ ApplicationWindow {
 
 			MenuItem {
 				text: "&New tag"
+				onTriggered: tabView1.currentIndex=1
 			}
 			MenuSeparator {
 			}
 			MenuItem {
 				text: "&Quit"
+				onTriggered: window1.close()
 			}
 		}
 
@@ -32,6 +34,7 @@ ApplicationWindow {
 
 			MenuItem {
 				text: "&Preferences"
+				onTriggered: tabView1.currentIndex=2
 			}
 		}
 
@@ -40,6 +43,7 @@ ApplicationWindow {
 
 			MenuItem {
 				text: "&About"
+				onTriggered: tabView1.currentIndex=3
 			}
 		}
 	}
@@ -51,19 +55,37 @@ ApplicationWindow {
 			anchors.verticalCenter: parent.verticalCenter
 
 			ToolButton {
-				text: "File"
-				iconSource: QIcon::fromTheme("document-save")
+				text: "Most recent"
 				tooltip: "Show your 10 most recent commands"
+				onClicked: tabView1.currentIndex=0
 			}
 			ToolButton {
-				text: "Edit"
+				text: "Top 10"
+				tooltip: "Show your 10 most used commands"
+				onClicked: tabView1.currentIndex=0
 			}
 
 			ToolSeparator {
 			}
 
 			ToolButton {
-				text: "Help"
+				text: "List tags"
+				tooltip: "List all your user defined tags"
+				onClicked: tabView1.currentIndex=0
+			}
+			ToolButton {
+				text: "New tag"
+				tooltip: "Create a new tag"
+				onClicked: tabView1.currentIndex=1
+			}
+
+			ToolSeparator {
+			}
+
+			ToolButton {
+				text: "Options"
+				tooltip: "Set options"
+				onClicked: tabView1.currentIndex=2
 			}
 		}
 	}
@@ -74,214 +96,28 @@ ApplicationWindow {
 		tabsVisible: false
 		anchors.fill: parent
 
-		Tab {
+		ListTab {
+			id: tabList
+		}
+
+		EditTab {
+			id: tabEdit
+		}
+
+		OptionsTab {
 			id: tabOptions
-			title: "Options"
-
-			GridLayout {
-				anchors.horizontalCenter: parent
-				anchors.verticalCenter: parent
-
-				Column {
-					spacing: 5
-
-					Row {
-						spacing: 5
-						Text {
-							id: textOption1
-							text: qsTr("text")
-						}
-						TextField {
-							id: inputOption1
-							text: qsTr("text")
-						}
-					}
-
-					Row {
-						spacing: 5
-						Text {
-							id: textOption2
-							text: qsTr("text")
-						}
-						TextField {
-							id: inputOption2
-							text: qsTr("text")
-						}
-					}
-				}
-			}
 		}
 
 		Tab {
-			title: "edit"
-			Rectangle {
-				color: "blue"
-			}
-		}
-
-		Tab {
-			title: "list"
-
-			SplitView {
-				id: splitView1
-				anchors.fill: parent
-
-				TableView {
-					id: tableView1
-					anchors.fill: parent
-
-					TableViewColumn {
-						title: "Command"
-						role: "string"
-					}
-
-					TableViewColumn {
-						title: "Timestamp"
-						role: "timestamp"
-					}
-
-					model: mock_commandModel
-				}
+			Text {
+				id: textAbout
+				anchors.centerIn: parent
+				text: qsTr("This application was developed so that you could gain an overview of your gohst command history...")
 			}
 		}
 	}
 
-	ListModel {
+	CommandModel_Mock {
 		id: mock_commandModel
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "ls ~/pr0n -A"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "rm -rf /"
-			timestamp: "2015-12-31"
-		}
-
-		ListElement {
-			string: "cowsay moo"
-			timestamp: "2015-12-31"
-		}
 	}
 }
